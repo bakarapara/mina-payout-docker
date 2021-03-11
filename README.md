@@ -95,4 +95,7 @@ wrote payout details to ./src/data/payout_details_20210311094926685_0_2025.json
 где последние две цифры - это диапазон просчитанных блоков, в данном случае 0-2025 (поможет запускать в следующий раз)
 
 
+Исходники
+https://github.com/jrwashburn/mina-pool-payout
+https://github.com/xni/mina-archive-docker
 
