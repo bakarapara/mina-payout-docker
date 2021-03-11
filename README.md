@@ -38,7 +38,7 @@ sudo docker run --name mina -d \
 -v /root/.mina-config:/root/.mina-config \
 -v /root/archive-data:/var/archive-data \
 local/mina-archive-bp:1.0.2 daemon \
---peer-list-url https://storage.googleapis.com/seed-lists/finalfinal3_seeds.txt \
+--peer-list-url LINK-TO-PEER-LIST \
 --coinbase-receiver COINBASE-RECEIVER-PUBKEY \
 -block-producer-key /root/keys/my-wallet \
 -block-producer-password "PASSWORD" \
