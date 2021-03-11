@@ -64,8 +64,21 @@ mina ledger export staking-epoch-ledger > staking-epoch-ledger.json
 ```
 npm start
 ```
+На экране появятся результаты работы
+```
+This script will payout from block 0 to maximum height 2025
+The pool total staking balance is 3815975.34
+We won these blocks: 2005,1983,1873,1844,1723,1693,1629
+We are paying out based on total rewards of 4320540000000 nanomina in this window.
+That is 4320.54 mina
+The Pool Fee is is 216.027 mina
+Total Payout should be 4104513000000 nanomina or 4104.513 mina
+The Total Payout is actually: 4104513000005 nm or 4104.513000005 mina
+wrote payouts transactions to ./src/data/payout_transactions_20210311094926685_0_2025.json
+wrote payout details to ./src/data/payout_details_20210311094926685_0_2025.json
+```
 
-Когда он закончится программа сообщит и можно нажать Ctrl+C
+Нажимаем Ctrl+C для выхода
 
 **В результате работы скрипта будут посчитаны только те блоки, которые были произведены в период ПОСЛЕ запуска архивной ноды. Информации о блоках ДО запуска в базе нет, соотвенно рассчеты по ним производится не будут.**
 
