@@ -1,7 +1,7 @@
 Docker-образ Mina+Archive
 =========================
 
-Образ `nikitin/mina-archive-bp:1.0.2` является полной и прозрачной
+Образ `local/mina-archive-bp:1.0.2` является полной и прозрачной
 заменой образу `minaprotocol/mina-daemon-baked:1.0.2-06f3c5c`. Можно просто 
 заменить один другим и нода сразу станет нодой + архивной нодой.
 
@@ -15,7 +15,7 @@ Docker-образ Mina+Archive
 git clone https://github.com/xni/mina-archive-docker && \
 cd mina-archive-docker && \
 git clone https://github.com/jrwashburn/mina-pool-payout && \
-docker build -t nikitin/mina-archive-bp:1.0.2 .
+docker build -t local/mina-archive-bp:1.0.2 .
 ```
 
 Затем, работаем как с обычным образом minaprotocol/mina-daemon-baked:1.0.2-06f3c5c.
