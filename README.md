@@ -10,7 +10,7 @@ Docker-образ Mina+Archive
 
 ```
 git clone https://github.com/rakhmanovr/mina-payout-docker && \
-cd mina-archive-docker && \
+cd mina-payout-docker && \
 git clone https://github.com/jrwashburn/mina-pool-payout && \
 docker build -t local/mina-archive-bp:1.0.2 .
 ```
