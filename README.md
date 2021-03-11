@@ -27,7 +27,7 @@ docker build -t local/mina-archive-bp:1.0.2 .
 Запуск ноды
 -----------
 
-Не забудьте заменить `LINK-TO-PEER-LIST` ссылка на список пиров, `COINBASE-RECEIVER-PUBKEY` в случае если хотите получать награду на адрес отличный от Block Producer и `PASSWORD` ваш пароль.
+Не забудьте заменить `LINK-TO-PEER-LIST` ссылка на файл со списком пиров, `COINBASE-RECEIVER-PUBKEY` в случае если хотите получать награду на адрес отличный от Block Producer и `PASSWORD` ваш пароль.
 
 ```
 sudo docker run --name mina -d \
