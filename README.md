@@ -80,7 +80,7 @@ _Поля `POOL_PUBLIC_KEY` `SEND_TRANSACTION_FEE` `SEND_PRIVATE_KEY` можно
 
 Пример:
 
-![Screen Shot 2021-03-11 at 16 31 25](https://user-images.githubusercontent.com/16775625/110787834-4719c880-8287-11eb-923a-7c34625dc162.png)
+
 
 
 Сохраняем файл и вводим команду:  
