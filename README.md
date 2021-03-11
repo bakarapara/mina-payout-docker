@@ -11,7 +11,7 @@ Docker-образ Mina+Archive
 На машине, где будет собираться образ, необходимо выполнить:
 
 ```
-git clone https://github.com/xni/mina-archive-docker && \
+git clone https://github.com/rakhmanovr/mina-payout-docker && \
 cd mina-archive-docker && \
 git clone https://github.com/jrwashburn/mina-pool-payout && \
 docker build -t local/mina-archive-bp:1.0.2 .
