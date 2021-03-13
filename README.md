@@ -1,7 +1,7 @@
 Docker-образ Mina+Archive
 =========================
 
-Образ `local/mina-archive-bp:1.0.2` является заменой образу `minaprotocol/mina-daemon-baked:1.0.2-06f3c5c` и содержит ноду и архивную ноду в одном образе.
+Образ `local/mina-archive-bp:1.0.5` является заменой образу `minaprotocol/mina-daemon-baked:1.0.2-06f3c5c` и содержит ноду и архивную ноду в одном образе.
 
 Как собрать
 -----------
@@ -12,7 +12,7 @@ Docker-образ Mina+Archive
 git clone https://github.com/rakhmanovr/mina-payout-docker && \
 cd mina-payout-docker && \
 git clone https://github.com/jrwashburn/mina-pool-payout && \
-docker build -t local/mina-archive-bp:1.0.2 .
+docker build -t local/mina-archive-bp:1.0.5 .
 ```
 
 Затем, работаем как с обычным образом minaprotocol/mina-daemon-baked:1.0.2-06f3c5c.
