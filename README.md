@@ -1,7 +1,7 @@
 Docker-образ Mina+Archive
 =========================
 
-Образ `local/mina-archive-bp:1.0.5` является заменой образу `minaprotocol/mina-daemon-baked:1.0.2-06f3c5c` и содержит ноду и архивную ноду в одном образе.
+Образ `local/mina-archive-bp:1.0.5` является заменой образу `minaprotocol/mina-daemon-baked:1.0.5-68200c7` и содержит ноду и архивную ноду в одном образе.
 
 Как собрать
 -----------
@@ -37,7 +37,7 @@ sudo docker run --name mina -d \
 -v /root/keys:/root/keys:ro \
 -v /root/.mina-config:/root/.mina-config \
 -v /root/archive-data:/var/archive-data \
-local/mina-archive-bp:1.0.2 daemon \
+local/mina-archive-bp:1.0.5 daemon \
 --peer-list-url LINK-TO-PEER-LIST \
 --coinbase-receiver COINBASE-RECEIVER-PUBKEY \
 -block-producer-key /root/keys/my-wallet \
