@@ -15,7 +15,7 @@ git clone https://github.com/jrwashburn/mina-pool-payout && \
 docker build -t local/mina-archive-bp:1.0.5 .
 ```
 
-Затем, работаем как с обычным образом minaprotocol/mina-daemon-baked:1.0.2-06f3c5c.
+Затем, работаем как с обычным образом minaprotocol/mina-daemon-baked:1.0.5-68200c7.
 
 Как обновить
 -----------
