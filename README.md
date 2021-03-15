@@ -1,5 +1,46 @@
-Docker-образ Mina+Archive
+Гайд по запуску ноды MINA
 =========================
+
+Данный гайд содержит информацию которая поможет запустить ноду MINA, архивную ноду, скрипт для подсчета ревардов и скрипт для отслеживания ап
+
+Подготовительные работы
+-----------
+
+Создаем папку ~/keys и загружаем в нее ключи кошелька, на котором вы собираетесь запускать Block Producer
+
+```
+mkdir ~/keys
+```
+Даем права на запись и чтение
+
+```
+chmod 700 $HOME/keys
+chmod 600 $HOME/keys/my-wallet
+```
+Экспортируем публичный ключ в файл .bashrc
+
+```
+echo 'export KEYPATH=$HOME/keys/my-wallet' >> $HOME/.bashrc
+echo 'export MINA_PUBLIC_KEY=$(cat $HOME/keys/my-wallet.pub)' >> $HOME/.bashrc
+source ~/.bashrc
+```
+Обновляем пакеты до последних версий
+
+```
+sudo apt update && sudo apt upgrade -y
+```
+
+Устанавливаем и активируем Docker
+
+```
+sudo apt install docker.io curl -y \
+&& sudo systemctl start docker \
+&& sudo systemctl enable docker
+```
+
+
+Описание docker-образа Mina+Archive
+-----------
 
 Образ `local/mina-archive-bp:1.0.5` является заменой образу `minaprotocol/mina-daemon-baked:1.0.5-68200c7` и содержит ноду и архивную ноду в одном образе.
 
@@ -93,6 +134,7 @@ mina ledger export staking-epoch-ledger > staking-epoch-ledger.json
 npm start
 ```
 На экране появятся результаты работы
+
 ```
 This script will payout from block 0 to maximum height 2025
 The pool total staking balance is 3815975.34
@@ -116,10 +158,45 @@ wrote payout details to ./src/data/payout_details_20210311094926685_0_2025.json
 где последние две цифры - это диапазон просчитанных блоков, в данном случае 0-2025
 
 
-Исходники
+Установка Sidecar, скрипта для отслеживания аптайма вашей ноды. 
+-----------
+
+Создаем файл mina-sidecar.json содержащий адрес куда будет отправляться статистика. На данный момент для тестов можно использовать адрес из примера, в дальнейшем его необходимо будет заменить
+
+```
+{
+  "uploadURL": "https://us-central1-mina-mainnet-303900.cloudfunctions.net/block-producer-stats-ingest/?token=72941420a9595e1f4006e2f3565881b5", 
+  "nodeURL": "http://mina:3085"
+}
+```
+Создаем сеть для докера
+
+```
+docker network create mina-network
+```
+
+Запускаем контейнер со скриптом
+
+```
+docker run --name mina-sidecar -d --network=mina-network -v $(pwd)/mina-sidecar.json:/etc/mina-sidecar.json minaprotocol/mina-bp-stats-sidecar:latest
+```
+
+Проверка логов
+
+```
+docker logs -f mina-sidecar
+```
+
+Пример нормальной работы скрипта
+
+![Screen Shot 2021-03-15 at 15 29 38](https://user-images.githubusercontent.com/16775625/111146794-46dd3e00-85a3-11eb-987e-04ca4da70262.png)
+
+
+Материалы использованные при составлении гайда
 -----------
 
 * https://github.com/jrwashburn/mina-pool-payout
 * https://github.com/garethtdavies/mina-payout-script
 * https://github.com/xni/mina-archive-docker
+* https://icohigh.gitbook.io/mina-node-testnet/russian/varianty-zapuska-nody
 
