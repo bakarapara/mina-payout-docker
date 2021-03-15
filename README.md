@@ -75,8 +75,8 @@ docker build -t local/mina-archive-bp:1.0.5 .
 ```
 docker network create mina-network
 ```
-
 и добавить ключ `--network mina-network`. Подробнее о запуске Sidecar в конце статьи.
+
 
 ```
 sudo docker run --name mina -d \
@@ -166,7 +166,7 @@ wrote payout details to ./src/data/payout_details_20210311094926685_0_2025.json
 где последние две цифры - это диапазон просчитанных блоков, в данном случае 0-2025
 
 
-#Установка Sidecar, скрипта для отслеживания аптайма вашей ноды. 
+Установка Sidecar, скрипта для отслеживания аптайма вашей ноды. 
 -----------
 
 ВАЖНО: Для корректной работы в команду запуска образа с нодой нужно добавить ключ --network mina-network
