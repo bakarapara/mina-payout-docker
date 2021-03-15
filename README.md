@@ -70,7 +70,7 @@ docker build -t local/mina-archive-bp:1.0.5 .
 
 Не забудьте заменить `LINK-TO-PEER-LIST` ссылка на файл со списком пиров, `COINBASE-RECEIVER-PUBKEY` в случае если хотите получать награду на адрес отличный от Block Producer и `PASSWORD` ваш пароль. 
 
-Если вы планируете запускать скрипт для сбора аналитики перед запуском образа необходимо создать сеть `docker network create mina-network` и добавить ключ `--network mina-network`. Подробнее о запуске Sidecar в конце статьи.
+Если вы планируете запускать скрипт для сбора аналитики - перед запуском образа необходимо создать сеть `docker network create mina-network` и добавить ключ `--network mina-network`. Подробнее о запуске Sidecar в конце статьи.
 
 ```
 sudo docker run --name mina -d \
