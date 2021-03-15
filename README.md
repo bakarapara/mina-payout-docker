@@ -199,4 +199,5 @@ docker logs -f mina-sidecar
 * https://github.com/garethtdavies/mina-payout-script
 * https://github.com/xni/mina-archive-docker
 * https://icohigh.gitbook.io/mina-node-testnet/russian/varianty-zapuska-nody
+* https://github.com/Fitblip/mina/tree/ryan/mina-bp-stats/automation/services/mina-bp-stats/sidecar
 
