@@ -68,7 +68,7 @@ docker build -t local/mina-archive-bp:1.0.5 .
 Запуск ноды
 -----------
 
-Не забудьте заменить `LINK-TO-PEER-LIST` ссылка на файл со списком пиров, `COINBASE-RECEIVER-PUBKEY` в случае если хотите получать награду на адрес отличный от Block Producer и `PASSWORD` ваш пароль.
+Не забудьте заменить `LINK-TO-PEER-LIST` ссылка на файл со списком пиров, `COINBASE-RECEIVER-PUBKEY` в случае если хотите получать награду на адрес отличный от Block Producer и `PASSWORD` ваш пароль. Если вы планируете запускать скрипт для сбора аналитики перед запуском образа необходимо создать сеть docker network create mina-network и добавить ключ --network mina-network. [Подробнее тут](#Установка Sidecar, скрипта для отслеживания аптайма вашей ноды.)
 
 ```
 sudo docker run --name mina -d \
@@ -158,8 +158,30 @@ wrote payout details to ./src/data/payout_details_20210311094926685_0_2025.json
 где последние две цифры - это диапазон просчитанных блоков, в данном случае 0-2025
 
 
-Установка Sidecar, скрипта для отслеживания аптайма вашей ноды. 
+#Установка Sidecar, скрипта для отслеживания аптайма вашей ноды. 
 -----------
+
+ВАЖНО: Для корректной работы в команду запуска образа с нодой нужно добавить ключ --network mina-network
+
+```
+sudo docker run --name mina -d \
+--restart always \
+--network mina-network \
+-p 8302:8302 \
+-p 127.0.0.1:3085:3085 \
+-v /root/keys:/root/keys:ro \
+-v /root/.mina-config:/root/.mina-config \
+-v /root/archive-data:/var/archive-data \
+local/mina-archive-bp:1.0.5 daemon \
+--peer-list-url LINK-TO-PEER-LIST \
+--coinbase-receiver COINBASE-RECEIVER-PUBKEY \
+-block-producer-key /root/keys/my-wallet \
+-block-producer-password "PASSWORD" \
+-insecure-rest-server \
+-file-log-level Debug \
+-log-level Info \
+-archive-address 3086
+```
 
 Создаем файл mina-sidecar.json содержащий адрес куда будет отправляться статистика. На данный момент для тестов можно использовать адрес из примера, в дальнейшем его необходимо будет заменить
 
