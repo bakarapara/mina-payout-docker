@@ -92,6 +92,8 @@ local/mina-archive-bp:1.1.3 daemon \
 -block-producer-key /root/keys/my-wallet \
 -block-producer-password "PASSWORD" \
 -insecure-rest-server \
+--open-limited-graphql-port \
+--limited-graphql-port 3095 \
 -file-log-level Debug \
 -log-level Info \
 -archive-address 3086
@@ -186,19 +188,25 @@ local/mina-archive-bp:1.1.3 daemon \
 -block-producer-key /root/keys/my-wallet \
 -block-producer-password "PASSWORD" \
 -insecure-rest-server \
+--open-limited-graphql-port \
+--limited-graphql-port 3095 \
 -file-log-level Debug \
 -log-level Info \
 -archive-address 3086
 ```
 
-Создаем файл mina-sidecar.json содержащий адрес куда будет отправляться статистика. На данный момент для тестов можно использовать адрес из примера, в дальнейшем его необходимо будет заменить
+Создаем файл mina-sidecar.json содержащий адрес куда будет отправляться статистика. 
 
 ```
+cd $HOME && touch ./mina-sidecar-config.json
+cat << EOF > ./mina-sidecar-config.json
 {
-  "uploadURL": "https://us-central1-mina-mainnet-303900.cloudfunctions.net/block-producer-stats-ingest/?token=72941420a9595e1f4006e2f3565881b5", 
-  "nodeURL": "http://mina:3085"
+  "uploadURL": "https://us-central1-mina-mainnet-303900.cloudfunctions.net/block-producer-stats-ingest/?token=72941420a9595e1f4006e2f3565881b5",
+  "nodeURL": "http://mina:3095"
 }
+EOF
 ```
+
 Создаем сеть для докера
 
 ```
