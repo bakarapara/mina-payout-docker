@@ -70,13 +70,7 @@ docker build -t local/mina-archive-bp:1.1.3 .
 
 Не забудьте заменить `LINK-TO-PEER-LIST` ссылка на файл со списком пиров, `COINBASE-RECEIVER-PUBKEY` в случае если хотите получать награду на адрес отличный от Block Producer и `PASSWORD` ваш пароль. 
 
-_Если вы планируете запускать скрипт для сбора аналитики Sidecar (обязателен для TOP120) - перед запуском образа необходимо создать сеть _
-
-```
-docker network create mina-network
-```
-и добавить ключ `--network mina-network`. Подробнее о запуске Sidecar в конце статьи.
-
+_Если вы планируете запускать скрипт для сбора аналитики (обязателен для TOP120) - команда для запуска будет немного отличаться. Смотрите раздел Sadecar в конце статьи. _
 
 ```
 sudo docker run --name mina -d \
@@ -92,8 +86,6 @@ local/mina-archive-bp:1.1.3 daemon \
 -block-producer-key /root/keys/my-wallet \
 -block-producer-password "PASSWORD" \
 -insecure-rest-server \
---open-limited-graphql-port \
---limited-graphql-port 3095 \
 -file-log-level Debug \
 -log-level Info \
 -archive-address 3086
