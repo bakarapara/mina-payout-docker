@@ -171,7 +171,25 @@ wrote payout details to ./src/data/payout_details_20210311094926685_0_2025.json
 Установка Sidecar, скрипта для отслеживания аптайма вашей ноды. 
 -----------
 
-ВАЖНО: Для корректной работы в команду запуска образа с нодой нужно добавить ключ --network mina-network
+Создаем сеть для докера
+
+```
+docker network create mina-network
+```
+
+Если у вас уже запущен образ, удаляем его
+
+```
+docker rm -f mina
+```
+
+И запускаем заново с дополнительными флагами 
+
+--network mina-network
+--open-limited-graphql-port
+--limited-graphql-port 3095
+
+Команда полностью:
 
 ```
 sudo docker run --name mina -d \
@@ -195,7 +213,7 @@ local/mina-archive-bp:1.1.3 daemon \
 -archive-address 3086
 ```
 
-Создаем файл mina-sidecar.json содержащий адрес куда будет отправляться статистика. 
+Создаем файл mina-sidecar-config.json содержащий адрес куда будет отправляться статистика. 
 
 ```
 cd $HOME && touch ./mina-sidecar-config.json
@@ -207,16 +225,15 @@ cat << EOF > ./mina-sidecar-config.json
 EOF
 ```
 
-Создаем сеть для докера
-
-```
-docker network create mina-network
-```
-
 Запускаем контейнер со скриптом
 
 ```
-docker run --name mina-sidecar -d --network=mina-network -v $(pwd)/mina-sidecar.json:/etc/mina-sidecar.json minaprotocol/mina-bp-stats-sidecar:latest
+docker run \
+--name mina-sidecar \
+--network mina-network \
+--restart=always -d \
+-v $(pwd)/mina-sidecar-config.json:/etc/mina-sidecar.json \
+minaprotocol/mina-bp-stats-sidecar:latest
 ```
 
 Проверка логов
