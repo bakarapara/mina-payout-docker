@@ -42,7 +42,7 @@ sudo apt install docker.io curl -y \
 Описание docker-образа Mina+Archive
 -----------
 
-Образ `local/mina-archive-bp:1.0.5` является заменой образу `minaprotocol/mina-daemon-baked:1.0.5-68200c7` и содержит ноду и архивную ноду в одном образе.
+Образ `local/mina-archive-bp:1.1.3` является заменой образу `minaprotocol/mina-daemon-baked:1.1.3-48401e9` и содержит ноду и архивную ноду в одном образе.
 
 Как собрать
 -----------
@@ -53,10 +53,10 @@ sudo apt install docker.io curl -y \
 git clone https://github.com/rakhmanovr/mina-payout-docker && \
 cd mina-payout-docker && \
 git clone https://github.com/jrwashburn/mina-pool-payout && \
-docker build -t local/mina-archive-bp:1.0.5 .
+docker build -t local/mina-archive-bp:1.1.3 .
 ```
 
-Затем, работаем как с обычным образом minaprotocol/mina-daemon-baked:1.0.5-68200c7.
+Затем, работаем как с обычным образом minaprotocol/mina-daemon-baked:1.1.3-48401e9.
 
 Как обновить
 -----------
@@ -86,7 +86,7 @@ sudo docker run --name mina -d \
 -v /root/keys:/root/keys:ro \
 -v /root/.mina-config:/root/.mina-config \
 -v /root/archive-data:/var/archive-data \
-local/mina-archive-bp:1.0.5 daemon \
+local/mina-archive-bp:1.1.3 daemon \
 --peer-list-url LINK-TO-PEER-LIST \
 --coinbase-receiver COINBASE-RECEIVER-PUBKEY \
 -block-producer-key /root/keys/my-wallet \
@@ -180,7 +180,7 @@ sudo docker run --name mina -d \
 -v /root/keys:/root/keys:ro \
 -v /root/.mina-config:/root/.mina-config \
 -v /root/archive-data:/var/archive-data \
-local/mina-archive-bp:1.0.5 daemon \
+local/mina-archive-bp:1.1.3 daemon \
 --peer-list-url LINK-TO-PEER-LIST \
 --coinbase-receiver COINBASE-RECEIVER-PUBKEY \
 -block-producer-key /root/keys/my-wallet \
