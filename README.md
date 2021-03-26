@@ -53,10 +53,10 @@ sudo apt install docker.io curl -y \
 git clone https://github.com/rakhmanovr/mina-payout-docker && \
 cd mina-payout-docker && \
 git clone https://github.com/jrwashburn/mina-pool-payout && \
-docker build -t local/mina-archive-bp:1.1.3 .
+docker build -t local/mina-archive-bp:1.1.4 .
 ```
 
-Затем, работаем как с обычным образом minaprotocol/mina-daemon-baked:1.1.3-48401e9.
+Затем, работаем как с обычным образом minaprotocol/mina-daemon-baked:x.x.x-xxxxxxx
 
 Как обновить
 -----------
@@ -80,7 +80,7 @@ sudo docker run --name mina -d \
 -v /root/keys:/root/keys:ro \
 -v /root/.mina-config:/root/.mina-config \
 -v /root/archive-data:/var/archive-data \
-local/mina-archive-bp:1.1.3 daemon \
+local/mina-archive-bp:1.1.4 daemon \
 --peer-list-url LINK-TO-PEER-LIST \
 --coinbase-receiver COINBASE-RECEIVER-PUBKEY \
 -block-producer-key /root/keys/my-wallet \
@@ -192,7 +192,7 @@ sudo docker run --name mina -d \
 -v /root/keys:/root/keys:ro \
 -v /root/.mina-config:/root/.mina-config \
 -v /root/archive-data:/var/archive-data \
-local/mina-archive-bp:1.1.3 daemon \
+local/mina-archive-bp:1.1.4 daemon \
 --peer-list-url LINK-TO-PEER-LIST \
 --coinbase-receiver COINBASE-RECEIVER-PUBKEY \
 -block-producer-key /root/keys/my-wallet \
