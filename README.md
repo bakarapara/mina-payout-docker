@@ -61,7 +61,7 @@ docker build -t local/mina-archive-bp:1.1.4 .
 Как обновить
 -----------
 
-В `Dockerfile` этого репозитория директиву `FROM` поправить на актуальную версию. Пересобрать и перезапустить.
+В `Dockerfile` этого репозитория директиву `FROM` поправить на актуальную версию. Актуальные версии можно найти на оф. сайте. https://minaprotocol.com/docs/connecting и https://minaprotocol.com/docs/advanced/archive-node. Пересобрать и перезапустить.
 
 ![mina-payout-docker:Dockerfile at main · rakhmanovr:mina-payout-docker 2021-03-11 16-01-22](https://user-images.githubusercontent.com/16775625/110784487-310a0900-8283-11eb-9e10-edf8488c9ecf.png)
 
