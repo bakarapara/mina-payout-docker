@@ -42,7 +42,7 @@ sudo apt install docker.io curl -y \
 Описание docker-образа Mina+Archive
 -----------
 
-Образ `local/mina-archive-bp:1.1.3` является заменой образу `minaprotocol/mina-daemon-baked:1.1.3-48401e9` и содержит ноду и архивную ноду в одном образе.
+Образ собираемый по данному гайду является заменой образу `minaprotocol/mina-daemon-baked:x.x.x-xxxxx` и содержит ноду и архивную ноду в одном образе.
 
 Как собрать
 -----------
