@@ -1,7 +1,7 @@
-FROM minaprotocol/mina-daemon-baked:1.1.3-48401e9
+FROM minaprotocol/mina-daemon-baked:1.1.4-a8893ab
 RUN apt-get update && \
     apt-get -y install postgresql-client-10 \
-               mina-archive=1.1.3-48401e9
+               mina-archive=1.1.4-a8893ab
 RUN curl -sL https://deb.nodesource.com/setup_15.x | /bin/bash -
 RUN apt-get update && \
     apt-get -y install nodejs
