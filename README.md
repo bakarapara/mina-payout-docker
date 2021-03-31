@@ -111,23 +111,31 @@ nano .env
 
 Редактируем следующие поля:
 
-* `MIN_HEIGHT` Указываем 0, если мы запускаем скрипт первый раз, или номер блока, на котором закончили расчет в прошлый раз.
-* `MAX_HEIGHT` Указываем на каком блоке закончить подсчет. 
-* `STARTING_NONCE` Получаем командой `mina advanced get-nonce --address PUBLICKEY`
 * `COMMISSION_RATE` Размер комиссии. По умолчанию 5% _(.05)_
 * `POOL_PUBLIC_KEY` Адрес кошелька на который вам делегируют токены _(hot wallet)_
 * `DATABASE:URL` postgres://archive:archive@127.0.0.1:5432/archive
+* `GRAPHQL_ENDPOINT` http://127.0.0.1:3085/graphql
 
-_Поля `SEND_TRANSACTION_FEE` `SEND_PRIVATE_KEY` можно оставить как есть, так как в текущем виде скрипт только производит рассчеты. Поле `MIN_CONFIRMATIONS=290` отвечает за количество блоков (в данном случае 290), которое будет вычтено с конца указанного диапазона, чтобы удостоверится в том, что блок в canonical chain (зеленый)_
+_Поля `POOL_MEMO` `SEND_TRANSACTION_FEE` `SEND_PRIVATE_KEY` `SEND_PUBLIC_KEY` можно оставить как есть, если вам нужно только произвести рассчеты. Поле `MIN_CONFIRMATIONS=290` отвечает за количество блоков (в данном случае 290), которое будет вычтено с конца указанного диапазона, чтобы удостоверится в том, что блок в canonical chain (зеленый)_
 
 Пример:
 
-![Screen Shot 2021-03-11 at 16 35 24](https://user-images.githubusercontent.com/16775625/110788255-d1fac300-8287-11eb-9759-7e4cc38d80c9.png)
+![Screen Shot 2021-03-31 at 14 45 09](https://user-images.githubusercontent.com/16775625/113132592-b869ed00-922f-11eb-89d5-a29136d58a77.png)
 
-Сохраняем файл и вводим команду:  
+
+Сохраняем файл. Создаем папку src/data/ledger и переходим в нее
+
+```
+mkdir src/data/ledger directory
+cd src/data/ledger directory
+```
+
+Экспортируем и переименовываем ledger:  
 
 ```
 mina ledger export staking-epoch-ledger > staking-epoch-ledger.json
+hash --ledger-file staking-epoch-ledger.json | xargs -I % cp staking-epoch-ledger.json %.json
+
 ```
 
 Для начала рассчета вводим 
@@ -135,6 +143,7 @@ mina ledger export staking-epoch-ledger > staking-epoch-ledger.json
 ```
 npm start
 ```
+
 На экране появятся результаты работы
 
 ```
@@ -150,7 +159,6 @@ wrote payouts transactions to ./src/data/payout_transactions_20210311094926685_0
 wrote payout details to ./src/data/payout_details_20210311094926685_0_2025.json
 ```
 
-Нажимаем Ctrl+C для выхода
 
 **В результате работы скрипта будут посчитаны только те блоки, которые были произведены в 
 период ПОСЛЕ запуска архивной ноды. Информации о блоках ДО запуска в базе нет, соотвенно 
