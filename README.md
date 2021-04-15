@@ -126,8 +126,8 @@ _Поля `POOL_MEMO` `SEND_TRANSACTION_FEE` `SEND_PRIVATE_KEY` `SEND_PUBLIC_KEY
 Сохраняем файл. Создаем папку src/data/ledger и переходим в нее
 
 ```
-mkdir src/data/ledger directory
-cd src/data/ledger directory
+mkdir src/data/ledger
+cd src/data/ledger
 ```
 
 Экспортируем и переименовываем ledger:  
