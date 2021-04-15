@@ -134,7 +134,7 @@ cd src/data/ledger
 
 ```
 mina ledger export staking-epoch-ledger > staking-epoch-ledger.json
-hash --ledger-file staking-epoch-ledger.json | xargs -I % cp staking-epoch-ledger.json %.json
+mina ledger hash --ledger-file staking-epoch-ledger.json | xargs -I % cp staking-epoch-ledger.json %.json
 
 ```
 
